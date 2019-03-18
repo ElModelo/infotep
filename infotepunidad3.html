@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Infotep practica de la unidad 3</title>
+</head>
+<body>
+	<form method="post" style="width: 800px;" action="#">
+		<fieldset>
+			<legend><b>Formulario</b></legend>
+			<div style="border-style: ridge;width: 330px;">
+			<div style="border-style: ridge;text-align: center;">
+			    <label style="font-weight: normal;" for="nombre">Nombre:</label>
+			    <input type="text" id="nombre" name="nombre" required><span style="color: red;">*</span>
+			</div>
+	    	<div style="border-style: ridge;text-align: center;">
+			    <label style="font-weight: normal;" for="apellido">Apellido:</label>
+			    <input type="text" id="apellido" name="apellido" required><span style="color: red;">*</span>
+		 	</div>
+	    	<div style="border-style: ridge;text-align: center;">
+			    <label for="cedula_o_pasaporte">Cedula o Pasaporte:</label>
+			    <input type="text" id="cedula_o_pasaporte" id="cedula_o_pasaporte" name="cedula_o_pasaporte" required><span style="color: red;">*</span>
+		  	</div>
+	    	<div style="border-style: ridge;text-align: center;">
+			    <label for="telefono">Telefono:</label>
+			    <input type="tel" id="telefono" name="telefono" required><span style="color: red;">*</span>
+		  	</div>
+	    	<div style="border-style: ridge;text-align: center;">
+			    <label for="direccion">Direccion:</label>
+			    <input type="text" id="direccion" name="direccion" required><span style="color: red;">*</span>
+		 	</div>
+	    	<div style="border-style: ridge;text-align: center;">
+			    <label style="font-weight: normal;" for="edad">Edad:</label>
+			    <input type="number" id="edad" name="edad" placeholder="-Selecciona-" min="1" max="100" required><span style="color: red;">*</span>
+			</div>
+			<div style="border-style: ridge;text-align: center;">
+		    	<input type="radio" name="sexo"	id="sexo" value="Masculino" required> Hombre 
+			  	<input type="radio" name="sexo"	id="sexo" value="Femenino" required> Mujer
+		  	</div>	
+		  	<div style="border-style: ridge;text-align: center;">
+		  		<button type="submit" id="enviar">Enviar</button>
+		  		<button type="reset" id="reset">Limpiar</button>
+		  	</div>				    
+		  	</div>
+		</fieldset>
+	</form>
+	<footer>
+		<script>
+			document.addEventListener('DOMContentLoaded', function(){
+				setTimeout(function(){ alert("Los campos con ' * ' son obligatorios"); }, 1000);
+				
+				var nombre = document.getElementById('nombre');
+				var apellido = document.getElementById('apellido');
+				var cedula = document.getElementById('cedula_o_pasaporte');
+				var telefono = document.getElementById('telefono');
+				var direccion = document.getElementById('direccion');
+				var edad = document.getElementById('edad');
+				var sexo = document.getElementById('sexo');
+				var reset = document.getElementById('reset');
+
+				nombre.addEventListener('blur', validarCampos);
+				apellido.addEventListener('blur', validarCampos);
+				cedula.addEventListener('blur', validarCampos);
+				telefono.addEventListener('blur', validarCampos);
+				direccion.addEventListener('blur', validarCampos);
+				edad.addEventListener('blur', validarCampos);
+				sexo.addEventListener('click', validarCampos);
+				reset.addEventListener('click', agregarAsteriscos);
+
+				function validarCampos() {
+					if (this.value== '') {
+						alert("el campo " + this.name + " es obligatorio");
+						
+					} else {
+						this.parentNode.childNodes[4].innerHTML = "";
+					}
+				
+
+				}
+
+				function agregarAsteriscos() {
+					nombre.parentNode.childNodes[4].innerHTML = "*";
+					apellido.parentNode.childNodes[4].innerHTML = "*";
+					cedula.parentNode.childNodes[4].innerHTML = "*";
+					telefono.parentNode.childNodes[4].innerHTML = "*";
+					direccion.parentNode.childNodes[4].innerHTML = "*";
+					edad.parentNode.childNodes[4].innerHTML = "*";
+				}
+
+
+
+
+
+
+
+
+
+
+			});
+				
+		</script>
+	</footer>
+</body>
+</html>
